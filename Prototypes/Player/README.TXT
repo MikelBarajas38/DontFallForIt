@@ -1,12 +1,8 @@
 ------------------------------------------------------------------------
-This is the project README file. Here, you should describe your project.
-Tell the reader (someone who does not know anything about this project)
-all they need to know. The comments should usually include at least:
+Player prototype
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
-USER INSTRUCTIONS:
+PROJECT TITLE: Don't fall for it!
+PURPOSE OF PROJECT: Pasar la materia, no se crea profe <3
+VERSION or DATE: 09/05/23
+USER INSTRUCTIONS: Programa basico del funcionamiento del jugador

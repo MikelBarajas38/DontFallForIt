@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Level
+comment1.params=world\ levelPath
+comment1.target=Level(greenfoot.World,\ java.lang.String)
+comment2.params=
+comment2.target=void\ buildNextRoom()
+comment3.params=
+comment3.target=void\ destroyCurrentRoom()
+comment4.params=levelPath
+comment4.target=void\ fillRoomList(java.lang.String)
+comment5.params=room
+comment5.target=void\ buildRoom(Room)
+comment6.params=x
+comment6.target=int\ convertXFromTiles(int)
+comment7.params=y
+comment7.target=int\ convertYFromTiles(int)
+numComments=8

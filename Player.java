@@ -113,7 +113,7 @@ public class Player extends PhysicsEntity
     private void checkWinCondition() {
         Goal roomGoal = (Goal) getOneIntersectingObject(Goal.class);
         if(roomGoal != null) {
-            MyWorld world = (MyWorld) getWorld();
+            LevelWorld world = (LevelWorld) getWorld();
             world.nextLevel();
         }
     }

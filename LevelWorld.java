@@ -1,13 +1,6 @@
-//test
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class MyWorld extends World
+public class LevelWorld extends World
 {
     
     public static final int WIDTH = 736;
@@ -15,11 +8,7 @@ public class MyWorld extends World
     
     Level currentLevel;
         
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
-    public MyWorld()
+    public LevelWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(WIDTH, HEIGHT, 1); 

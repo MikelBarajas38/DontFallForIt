@@ -49,7 +49,7 @@ public class Level
         Arrays.sort(rooms);
         
         for (File currentRoom : rooms) {
-            System.out.println(levelPath + "/" + currentRoom.getName());
+            //System.out.println(levelPath + "/" + currentRoom.getName());
             roomList.add(new Room(levelPath + "/" + currentRoom.getName()));
         }
         

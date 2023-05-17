@@ -117,6 +117,4 @@ public class Player extends PhysicsEntity
             world.nextLevel();
         }
     }
-
-    
 }

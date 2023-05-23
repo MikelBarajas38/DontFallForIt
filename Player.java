@@ -27,18 +27,16 @@ public class Player extends PhysicsEntity
         setImage(image);
     }
     
-    public void act()
-    {
-        super.act();
+    public void handleState() {
+        checkWinCondition();
+    }
+    
+    public void handleMovement() {
         getWorld().showText("bounce: " + currentBounce, getWorld().getWidth()/2, 90);
         getWorld().showText("VelocityX: " + getVelocityX(), getWorld().getWidth()/2, 50);
         getWorld().showText("VelocityY: " + getVelocityY(), getWorld().getWidth()/2, 30);
         getWorld().showText("gravity: " + getGravity(), getWorld().getWidth()/2, 70);
         getWorld().showText("direction: " + getDirection(), getWorld().getWidth()/4, 70);
-        checkWinCondition();
-    }
-    
-    public void handleMovement() {
         handleHorizontalMovement();
         handleVerticalMovement();
     }

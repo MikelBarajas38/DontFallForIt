@@ -36,4 +36,8 @@ public class TestEntity extends PhysicsEntity
         }
     }
     
+    public void handleState() {
+        
+    }
+    
 }

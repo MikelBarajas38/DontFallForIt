@@ -32,6 +32,7 @@ public abstract class PhysicsEntity extends Actor
         handleMovement();
         handleCollisions();
         setMovement();
+        handleState();
     }
     
     public void handleGravity() {
@@ -82,6 +83,8 @@ public abstract class PhysicsEntity extends Actor
     }
     
     public abstract void handleMovement();
+    
+    public abstract void handleState();
     
     public void setMovement() {
         x += velocityX;

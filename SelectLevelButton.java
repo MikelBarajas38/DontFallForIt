@@ -10,12 +10,7 @@ public class SelectLevelButton extends Button
         this.levelSelector = levelSelector;
         actualLevelWorld = world;
     }
-    public void act()
-    {
-        if (Greenfoot.mouseClicked(this)) {
-            onButtonClicked();
-        }
-    }
+
     public void onButtonClicked(){
         
         while(levelSelector>1){

@@ -1,6 +1,7 @@
 ### Greenfoot ###
 *.class
 *.ctxt
+*.greenfoot
 doc/
 
 ### IntelliJ IDEA ###

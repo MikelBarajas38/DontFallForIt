@@ -7,7 +7,7 @@ public class QuitGameButton extends Button
     }
 
     public void onButtonClicked(){
-        Greenfoot.setWorld(new QuitMenu());
+        Greenfoot.setWorld(new QuitGameScreen());
         Greenfoot.stop();
     }
 }

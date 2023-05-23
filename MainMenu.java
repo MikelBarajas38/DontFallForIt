@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class MainMenu extends Menu
+public class MainMenu extends World
 {
     private static final int FONT_SIZE = 50;
     
     public MainMenu()
     {    
-        super();
+        super(800, 600, 1);
         prepare();
     }
     

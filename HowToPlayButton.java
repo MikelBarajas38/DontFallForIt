@@ -6,10 +6,6 @@ public class HowToPlayButton extends Button
         super(text,size,color);
     }
 
-    public void act()
-    {
-        onButtonClicked();
-    }
     public void onButtonClicked(){
         
     }

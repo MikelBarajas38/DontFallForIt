@@ -42,8 +42,12 @@ public class Player extends PhysicsEntity implements StateMachine
     public void act()
     {   
         handleState();
-        checkWinCondition();
-        if (isAtEdge()) getWorld().removeObject(this);
+        
+        if (isAtEdge()) {
+            getWorld().removeObject(this);   
+        } else {
+             checkWinCondition();   
+        }
     }
     
     public EnumMap<State, BaseState> getStates() {

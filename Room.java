@@ -12,8 +12,9 @@ import greenfoot.Actor;
 public class Room  
 {
     
-    private List<List<String>> tileMap;
-    private List<List<Integer>> sectorList;
+    private List<List<String>> tileMap = new ArrayList<>();
+    private List<List<Integer>> sectorList = new ArrayList<>();
+    private List<List<Integer>> enemyList = new ArrayList<>();
     
     private int startingPositionX;
     private int startingPositionY;
@@ -22,8 +23,6 @@ public class Room
 
     
     public Room(String roomFile) {
-        tileMap = new ArrayList<>();
-        sectorList = new ArrayList<>();
         readRoomFromFile(roomFile);
     }
     
@@ -47,6 +46,16 @@ public class Room
                     sectorInfo.add(Integer.parseInt(info));
                 }
                 sectorList.add(sectorInfo);
+            }
+            
+            int enemyCount = Integer.parseInt(br.readLine());
+            for(int i = 0; i < enemyCount; i++) {
+                List<Integer> enemyInfo = new ArrayList<>();
+                String line = br.readLine();
+                for(String info : line.split(",")) {
+                    enemyInfo.add(Integer.parseInt(info));
+                }
+                enemyList.add(enemyInfo);
             }
             
             int roomSize = Integer.parseInt(br.readLine());
@@ -76,6 +85,10 @@ public class Room
     
     public List<List<Integer>> getSectorList() {
         return sectorList;
+    }
+    
+    public List<List<Integer>> getEnemyList() {
+        return enemyList;
     }
     
     public int getStartingPositionX() {

@@ -1,5 +1,4 @@
-import greenfoot.World;
-import greenfoot.GreenfootImage;
+import greenfoot.*;
 
 import java.util.List;
 import java.util.Iterator;
@@ -56,11 +55,11 @@ public class Level
     
     private void buildRoom(Room room) {
         
-        Iterator sectorIterator = room.getSectorList().listIterator();
+        Iterator sectorIterator = room.getSectorList().iterator();
         while(sectorIterator.hasNext()) {
             List<Integer> data = (List<Integer>) sectorIterator.next();
-            GravitySector Sector = new GravitySector(Direction.getDirection(data.get(0)), convertXFromTiles(data.get(1)), convertYFromTiles(data.get(2)), data.get(3), data.get(4), TILESIZE);
-            world.addObject(Sector, Sector.getDrawX(), Sector.getDrawY());
+            GravitySector sector = new GravitySector(Direction.getDirection(data.get(0)), convertXFromTiles(data.get(1)), convertYFromTiles(data.get(2)), data.get(3), data.get(4), TILESIZE);
+            world.addObject(sector, sector.getDrawX(), sector.getDrawY());
         }
         
         List<List<String>> tileMap = room.getTileMap();
@@ -85,10 +84,14 @@ public class Level
 
         }
         
-        int testX = convertXFromTiles(6) - TILESIZE/2;
-        int testY = convertYFromTiles(6) - TILESIZE/2;
-        Enemy enemy = new Madshroom(testX, testY);
-        world.addObject(enemy, testX, testY);
+        Iterator enemyIterator = room.getEnemyList().iterator();
+        while(enemyIterator.hasNext()) {
+            List<Integer> data = (List<Integer>) enemyIterator.next();
+            int enemyX = convertXFromTiles(data.get(1)) - TILESIZE/2;
+            int enemyY = convertXFromTiles(data.get(2)) - TILESIZE/2;
+            Enemy enemy = EnemyFactory.getEnemy(EnemyType.getEnemyType(data.get(0)), enemyX, enemyY);
+            world.addObject(enemy, enemyX, enemyY);
+        }
         
         int goalX = convertXFromTiles(room.getEndingPositionX()) - TILESIZE/2;
         int goalY = convertYFromTiles(room.getEndingPositionY()) - TILESIZE/2;

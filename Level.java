@@ -85,6 +85,11 @@ public class Level
 
         }
         
+        int testX = convertXFromTiles(6) - TILESIZE/2;
+        int testY = convertYFromTiles(6) - TILESIZE/2;
+        Enemy enemy = new Madshroom(testX, testY);
+        world.addObject(enemy, testX, testY);
+        
         int goalX = convertXFromTiles(room.getEndingPositionX()) - TILESIZE/2;
         int goalY = convertYFromTiles(room.getEndingPositionY()) - TILESIZE/2;
         Goal goal = new Goal(goalX, goalY);

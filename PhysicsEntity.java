@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.EnumMap;
 
 public abstract class PhysicsEntity extends Actor
 {
@@ -12,10 +13,10 @@ public abstract class PhysicsEntity extends Actor
     private int velocityY;
     
     private int gravity;
-    private int gravityX;
     private int gravityY;
     
-    private Direction currentDirection;
+    private Direction currentDirectionY;
+    private Direction currentDirectionX;
     
     public PhysicsEntity(int x, int y) {
         this.x = x;
@@ -26,44 +27,22 @@ public abstract class PhysicsEntity extends Actor
         setLocation(x,y);
     }
     
-    public void act()
-    {
-        handleGravity();
-        handleMovement();
-        handleCollisions();
-        setMovement();
-        handleState();
-    }
-    
     public void handleGravity() {
         GravitySector currentSector = (GravitySector)getOneObjectAtOffset(0, getImage().getWidth() + velocityX, GravitySector.class);
-        currentDirection = currentSector.getDirection();
+        currentDirectionY = currentSector.getDirection();
         
-        switch(currentDirection) {
+        switch(currentDirectionY) {
             case UP:
-                gravityX = 0;
                 gravityY = -gravity;
-                setRotation(180);
-                break;
-            
-            case RIGHT:
-                gravityX = gravity;
-                gravityY = 0;
                 break;
             
             case DOWN:
-                gravityX = 0;
                 gravityY = gravity;
                 setRotation(0);
                 break;
-                
-            case LEFT:
-                gravityX = -gravity;
-                gravityY = 0;
-                break;
 
         }
-    
+        
         velocityY += gravityY;
         if(velocityY > TERMINAL_VELOCITY) {
             velocityY = TERMINAL_VELOCITY;
@@ -71,20 +50,9 @@ public abstract class PhysicsEntity extends Actor
             velocityY = -TERMINAL_VELOCITY;
         }
         
-        /*
-        velocityX += gravityX;
-        if(velocityX > TERMINAL_VELOCITY) {
-            velocityX = TERMINAL_VELOCITY;
-        } else if(velocityX < -TERMINAL_VELOCITY) {
-            velocityX = -TERMINAL_VELOCITY;
-        }
-        */
-        
     }
     
-    public abstract void handleMovement();
-    
-    public abstract void handleState();
+    public abstract EnumMap<State, BaseState> getStates();
     
     public void setMovement() {
         x += velocityX;
@@ -177,11 +145,11 @@ public abstract class PhysicsEntity extends Actor
     }
     
     public boolean isGrounded() {
-        if(currentDirection == Direction.DOWN && terrainIsDown()) {
+        if(currentDirectionY == Direction.DOWN && terrainIsDown()) {
             return true;
         }
         
-        if(currentDirection == Direction.UP && terrainIsUp()) {
+        if(currentDirectionY == Direction.UP && terrainIsUp()) {
             return true;
         }
         
@@ -189,14 +157,28 @@ public abstract class PhysicsEntity extends Actor
     } 
     
     public boolean isFalling() {
-        if(currentDirection == Direction.DOWN && velocityY >= 0) {
+        if(currentDirectionY == Direction.DOWN && velocityY > 0) {
             return true;
         }
         
-        if(currentDirection == Direction.UP && velocityY <= 0) {
+        if(currentDirectionY == Direction.UP && velocityY < 0) {
             return true;
         }
         
+        return false;
+    }
+    
+    public boolean isOnWall() {
+        int imageWidth = getImage().getWidth();
+        int imageHeight = getImage().getHeight();
+        
+        if(getOneObjectAtOffset(imageWidth /-2 - 1, imageHeight / 2 - 4, Terrain.class) != null ||
+            getOneObjectAtOffset(imageWidth /-2 - 1, imageHeight / -2  + 4, Terrain.class) != null ||
+            getOneObjectAtOffset(imageWidth /2 + 1, imageHeight / -2  + 4, Terrain.class) != null ||
+            getOneObjectAtOffset(imageWidth /2 + 1, imageHeight / -2  + 4, Terrain.class) != null){
+                return true; 
+            }            
+            
         return false;
     }
 
@@ -244,8 +226,16 @@ public abstract class PhysicsEntity extends Actor
         return TERMINAL_VELOCITY;
     }
     
-    public Direction getDirection() {
-        return currentDirection;
+    public Direction getDirectionY() {
+        return currentDirectionY;
+    }
+    
+    public Direction getDirectionX() {
+        return currentDirectionX;
+    }
+    
+    public void setDirectionX(Direction direction) {
+        this.currentDirectionX = direction;
     }
     
 }

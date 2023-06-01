@@ -51,6 +51,10 @@ public class Madshroom extends Enemy implements StateMachine
         stateManager.changeState(State.HIT);
     }
     
+    public String getState(){
+        return stateManager.getCurrentState();
+    }
+    
     private class IdleState implements BaseState {
         
         public void enter() {

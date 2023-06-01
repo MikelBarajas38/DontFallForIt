@@ -93,6 +93,21 @@ public class Level
             world.addObject(enemy, enemyX, enemyY);
         }
         
+        Enemy enemy2 = new Ghost(testX+200, testY+50);
+        world.addObject(enemy2,testX+200, testY+50);
+        
+        Enemy enemy3 = new Skull(testX+100, testY);
+        world.addObject(enemy3,testX+100, testY);
+        
+        Enemy enemy4 = new Cannon(testX+180, testY,Direction.LEFT);
+        world.addObject(enemy4,testX+180, testY);
+        
+        Enemy enemy5 = new Bird(testX+200, testY);
+        world.addObject(enemy5,testX+200, testY);
+        
+        Enemy enemy6 = new Saw(testX-128, testY+128);
+        world.addObject(enemy6,testX-128, testY+128);
+        
         int goalX = convertXFromTiles(room.getEndingPositionX()) - TILESIZE/2;
         int goalY = convertYFromTiles(room.getEndingPositionY()) - TILESIZE/2;
         Goal goal = new Goal(goalX, goalY);

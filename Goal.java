@@ -1,23 +1,34 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Goal here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Goal extends Actor
+public abstract class Goal extends Actor
 {
     
-    public Goal(int x, int y) {
-        setImage(new GreenfootImage(16,16));
-        getImage().setColor(new Color(255,236,81));
-        getImage().fill();
-        setLocation(x,y);
+    private final SimpleAnimationManager animationManager;
+    
+    public Goal(int x, int y, Direction direction, String path) {
+        switch(direction){
+            case UP:
+                setRotation(0);
+                break;
+            case RIGHT:
+                setRotation(90);
+                break;
+            case DOWN:
+                setRotation(180);
+                break;
+            case LEFT:
+                setRotation(270);
+                break;
+            default:
+                setRotation(0);
+        }
+        animationManager = new SimpleAnimationManager(this, path);
     }
     
     public void act()
     {
-        // Add your action code here.
+        animationManager.nextSprite();
     }
+    
+    public abstract void activate();
 }

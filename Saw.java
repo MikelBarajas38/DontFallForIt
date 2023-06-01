@@ -3,11 +3,9 @@ import greenfoot.*;
 import java.util.Random;
 import java.util.EnumMap;
 
-public class Saw extends Enemy
+public class Saw extends Enemy implements StateMachine
 {
     private static final int SCORE = 0;
-
-    private boolean shouldMove;
     
     private Random random = new Random();
     
@@ -48,7 +46,7 @@ public class Saw extends Enemy
         
     }
     
-    public String getState(){
+    public State getState(){
         return stateManager.getCurrentState();
     }
     
@@ -56,7 +54,6 @@ public class Saw extends Enemy
         
         public void enter() {
             animationManager.changeSprite(State.IDLE);
-            shouldMove = false;
             setVelocityY(0);
         }
         

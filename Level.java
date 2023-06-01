@@ -98,10 +98,32 @@ public class Level
             world.addObject(enemy, enemyX, enemyY);
         }
         
-        int goalX = convertXFromTiles(room.getEndingPositionX()) - TILESIZE/2;
-        int goalY = convertYFromTiles(room.getEndingPositionY()) - TILESIZE/2;
-        Goal goal = new Goal(goalX, goalY);
+        Iterator coinIterator = room.getCoinList().iterator();
+        while(coinIterator.hasNext()) {
+            List<Integer> data = (List<Integer>) coinIterator.next();
+            int coinX = convertXFromTiles(data.get(0)) - TILESIZE/2;
+            int coinY = convertXFromTiles(data.get(1)) - TILESIZE/2;
+            boolean gravity = data.get(2) == 1;
+            Coin coin = new Coin(coinX, coinY, gravity);
+            world.addObject(coin, coinX, coinY);
+        }
+        
+        int goalX = convertXFromTiles(room.getEndingPositionX()) - 32;
+        int goalY = convertYFromTiles(room.getEndingPositionY()) - 32;
+        
+        Goal goal;
+        if(currentRoom == roomList.get(roomList.size() - 1)){
+            goal = new FinalGoal(goalX, goalY, getClosestTile(tileMap, room.getEndingPositionX(), room.getEndingPositionY()));            
+        } else {
+            goal = new MiddleGoal(goalX, goalY, getClosestTile(tileMap, room.getEndingPositionX(), room.getEndingPositionY()));
+        }
+        
         world.addObject(goal, goalX, goalY);
+        
+        int bigCoinX = convertXFromTiles(room.getBigCoinPositionX()) - TILESIZE/2;
+        int bigCoinY = convertYFromTiles(room.getBigCoinPositionY()) - TILESIZE/2;
+        BigCoin bigCoin = new BigCoin(bigCoinX, bigCoinY);
+        world.addObject(bigCoin, bigCoinX, bigCoinY);
         
         int playerX = convertXFromTiles(room.getStartingPositionX()) - TILESIZE/2;
         int playerY = convertYFromTiles(room.getStartingPositionY()) - TILESIZE/2;
@@ -116,6 +138,41 @@ public class Level
     
     private static int convertYFromTiles(int y) {
         return TOPRIGHTY + y * TILESIZE;
+    }
+    
+    private Direction getClosestTile(List<List<String>> tileMap, int x, int y){
+        int distanceTop = getDistanceToTile(tileMap, x, y, 0, -1);
+        int distanceDown = getDistanceToTile(tileMap, x, y, 0, 1);
+        int distanceLeft = getDistanceToTile(tileMap, x, y, -1, 0);
+        int distanceRight = getDistanceToTile(tileMap, x, y, +1, 0);
+        
+        int minVerticalDistance = Math.min(distanceTop, distanceDown);
+        int minHorizontalDistance = Math.min(distanceLeft, distanceRight);
+        
+        if(minVerticalDistance <= minHorizontalDistance) {
+            if(minVerticalDistance == distanceTop) {
+                return Direction.DOWN;
+            } else {
+                return Direction.UP;
+            }
+        } else {
+            if(minHorizontalDistance == distanceLeft) {
+                return Direction.RIGHT;
+            } else {
+                return Direction.LEFT;
+            }
+        }
+        
+    }
+    
+    private int getDistanceToTile(List<List<String>> tileMap, int x, int y, int offsetX, int offsetY) {
+        int distance = 0;
+        while(tileMap.get(y).get(x).equals("0")) {
+            x += offsetX;
+            y += offsetY;
+            distance++;
+        }
+        return distance;
     }
     
 }

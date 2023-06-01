@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 import java.util.EnumMap;
 
-public class Skull extends Enemy
+public class Skull extends Enemy implements StateMachine
 {
     private static final int MOVEMENT_SPEED = 2;
     private static final int SCORE = 120;
@@ -52,7 +52,7 @@ public class Skull extends Enemy
         world.setScore(world.getScore() + SCORE);
     }
     
-    public String getState(){
+    public State getState(){
         return stateManager.getCurrentState();
     }
     

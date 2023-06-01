@@ -14,7 +14,7 @@ public class SimpleAnimationManager
     private List<GreenfootImage> currentSpriteList;
     private Iterator<GreenfootImage> spriteIterator;
     
-    private static final int FRAMERATE = 2;
+    private static final int FRAMERATE = 4;
     private int currentFrame = FRAMERATE;
 
     public SimpleAnimationManager(Actor actor, String spritePath)
@@ -39,7 +39,7 @@ public class SimpleAnimationManager
     }
 
     private void setSprites(String spritePath) {
-       File spriteFolder = new File(spritePath);
+        File spriteFolder = new File(spritePath);
         File[] imgs = spriteFolder.listFiles();
         Arrays.sort(imgs);
         
@@ -50,6 +50,7 @@ public class SimpleAnimationManager
         }
         
         currentSpriteList = spriteList;
+        spriteIterator = currentSpriteList.iterator();
     }
 
     

@@ -23,6 +23,7 @@ public class StateManager
     
     public void handleProcess() {
         State newState = currentState.process();
+
         if(newState != State.NULL) {
             changeState(newState);
         }

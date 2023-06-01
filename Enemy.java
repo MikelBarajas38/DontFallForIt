@@ -17,6 +17,8 @@ public abstract class Enemy extends PhysicsEntity
     
     public abstract void destroy();
     
+    public abstract String getState();
+    
     public int getScore() {
         return score;
     }

@@ -7,6 +7,6 @@ public class PlayButton extends Button
     }
 
     public void onButtonClicked(){
-        Greenfoot.setWorld(new LevelWorld());
+        Greenfoot.setWorld(new LevelWorld("levels/testLevel"));
     }
 }

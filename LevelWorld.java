@@ -15,11 +15,12 @@ public class LevelWorld extends World
     
     Level currentLevel;
         
-    public LevelWorld()
+    public LevelWorld(String levelPath)
     {    
         super(WIDTH, HEIGHT, 1); 
         setBackground(new GreenfootImage("images/tiles/backround/bg.png"));
-        currentLevel = new Level(this, "levels/testLevel");
+        currentLevel = new Level(this, levelPath);
+        setActOrder(Sector.class);
     }
     
     public void act() {

@@ -55,7 +55,7 @@ public class AnimationManager
     
     private void setSprites(String spritePath) {
         for (State state : entity.getStates().keySet()) {
-
+          
             File spriteFolder = new File(spritePath + state.getPath());
             File[] imgs = spriteFolder.listFiles();
             Arrays.sort(imgs);

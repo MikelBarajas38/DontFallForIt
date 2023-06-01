@@ -10,7 +10,7 @@ public class EnemyFactory
             case SKULL:
                 return new Skull(x,y);
             case CANNON:
-                return new Cannon(x,y,Direction.RIGHT);
+                return new Cannon(x,y,Direction.UP);
             case BIRD:
                 return new Bird(x,y);
             case SAW:

@@ -5,9 +5,9 @@ import java.util.EnumMap;
 public class Player extends PhysicsEntity implements StateMachine
 {
     
-    private static final int MOVEMENT_SPEED = 4;
-    private static final int JUMP_SPEED = 12;
-    private static final int MAX_BOUNCE = 8;
+    private static final int MOVEMENT_SPEED = 3;
+    private static final int JUMP_SPEED =12;
+    private static final int MAX_BOUNCE = 4;
 
     private int acceleration = 1;
     
@@ -29,7 +29,7 @@ public class Player extends PhysicsEntity implements StateMachine
     private final BaseState hitState = new HitState();
     private final StateManager stateManager = new StateManager(this);
 
-    private final AnimationManager animationManager = new AnimationManager(this, "images/sprites/player1/");
+    private final AnimationManager animationManager = new AnimationManager(this, "images/sprites/player0/");
         
     public Player(int x, int y) {
         super(x, y);
@@ -44,7 +44,8 @@ public class Player extends PhysicsEntity implements StateMachine
         handleState();
         
         if (isAtEdge()) {
-            getWorld().removeObject(this);   
+            LevelWorld world = (LevelWorld) getWorld();
+            world.reloadRoom(); 
         } else {
              checkWinCondition();   
         }
@@ -163,7 +164,7 @@ public class Player extends PhysicsEntity implements StateMachine
         Goal roomGoal = (Goal) getOneIntersectingObject(Goal.class);
         if(roomGoal != null) {
             LevelWorld world = (LevelWorld) getWorld();
-            world.nextLevel();
+            world.nextRoom();
         }
     }
     
@@ -253,7 +254,7 @@ public class Player extends PhysicsEntity implements StateMachine
             }
             
             
-            if(terrainIsDown()) {
+            if(isGrounded()) {
                 if(getVelocityX() == 0) {
                     return State.IDLE;
                 }
@@ -298,6 +299,7 @@ public class Player extends PhysicsEntity implements StateMachine
             if(!Greenfoot.isKeyDown("up")) {
                 setGravity(heavyGravity);
             }
+            
             return State.NULL;
         }
         
@@ -326,6 +328,7 @@ public class Player extends PhysicsEntity implements StateMachine
         }
         
         public void exit() {
+            setGravity(baseGravity);
             handleCollisions();
             setMovement();
         }

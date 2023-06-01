@@ -29,7 +29,7 @@ public class Player extends PhysicsEntity implements StateMachine
     private final BaseState hitState = new HitState();
     private final StateManager stateManager = new StateManager(this);
 
-    private final AnimationManager animationManager = new AnimationManager(this, "images/sprites/player1/");
+    private final AnimationManager animationManager = new AnimationManager(this, "images/sprites/player0/");
         
     public Player(int x, int y) {
         super(x, y);

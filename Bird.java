@@ -37,7 +37,6 @@ public class Bird extends Enemy
     public void act()
     {        
         handleState();       
-        System.out.println(stateManager.getCurrentState());
         if (isAtEdge()) getWorld().removeObject(this);
     }
     
@@ -59,6 +58,8 @@ public class Bird extends Enemy
     public void destroy() {
         setDead();
         stateManager.changeState(State.HIT);
+        LevelWorld world = (LevelWorld) getWorld();
+        world.setScore(world.getScore() + SCORE);
     }
     
     public String getState(){

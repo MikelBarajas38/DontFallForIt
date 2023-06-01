@@ -6,7 +6,8 @@ public class LevelWorld extends World
     public static final int WIDTH = 736;
     public static final int HEIGHT = 736;
     
-    private int score;
+    private int previousScore = 0;
+    private int score = 0;
     
     private static final int FPS = 120;
     private int timer = 1200;
@@ -49,10 +50,12 @@ public class LevelWorld extends World
     }
     
     public void nextRoom() {
+        previousScore = score;
         currentLevel.buildNextRoom();
     }
     
     public void reloadRoom() {
+        score = previousScore;
         currentLevel.rebuildRoom();
     }
 }

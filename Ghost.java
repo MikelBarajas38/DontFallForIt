@@ -51,6 +51,8 @@ public class Ghost extends Enemy
     public void destroy(){
         setDead();
         stateManager.changeState(State.HIT);
+        LevelWorld world = (LevelWorld) getWorld();
+        world.setScore(world.getScore() + SCORE);
     }
     
     public String getState(){

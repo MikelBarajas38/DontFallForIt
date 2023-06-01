@@ -7,7 +7,13 @@ public class GravitySector extends Sector
     
     private Direction direction;
     
-    private static EnumMap <Direction, Color> directionColor = null;
+    private static EnumMap <Direction, GreenfootImage> directionColor = null;
+    
+    private GreenfootImage background;
+    
+    private int scrollY = 0;
+    private int scrollSpeed = 1;
+    private int scrollDirection;
 
     
     public GravitySector(Direction direction, int topLeftX, int topLeftY, int height, int width, int tileSize) {
@@ -16,20 +22,26 @@ public class GravitySector extends Sector
         
         if(directionColor == null){
             directionColor = new EnumMap<>(Direction.class);
-            directionColor.put(Direction.UP, new Color(119,118,188));
-            directionColor.put(Direction.DOWN, new Color(205,199,229));   
-            directionColor.put(Direction.LEFT, new Color(255,236,81));   
-            directionColor.put(Direction.RIGHT, new Color(255,103,77));  
+            directionColor.put(Direction.UP, new GreenfootImage("images/sector/tiled3.jpg")); 
+            directionColor.put(Direction.DOWN, new GreenfootImage("images/sector/tiled4.jpg"));
         } 
         
-        this.setImage(new GreenfootImage(getWidth(), getHeight()));
+        if(direction == Direction.DOWN){
+            scrollDirection = 1;
+        } else {
+            scrollDirection = -1;            
+        }
         
-        getImage().setColor(directionColor.get(direction));
-        getImage().fill();
+        background = new GreenfootImage(directionColor.get(direction));
+        this.setImage(new GreenfootImage(getWidth(), getHeight()));
     }
     
     public void act() {
-        // Add your action code here.
+        
+        scrollY = (scrollY + scrollDirection * scrollSpeed + getHeight())%getHeight();
+        getImage().drawImage(background, 0, scrollY);
+        getImage().drawImage(background, 0, (scrollY - getHeight()));
+        
     }
     
     public Direction getDirection() {

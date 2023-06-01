@@ -145,9 +145,8 @@ public class Player extends PhysicsEntity implements StateMachine
         Enemy enemy;
         
         enemy = getStompableEnemy();
-        String state = "SpecialState";
         
-        if(enemy != null && enemy.isKillable() && !enemy.getState().contains(state)) {
+        if(enemy != null && enemy.isKillable() && !(enemy.getState() == State.SPECIAL)) {
             enemy.destroy();
             stateManager.changeState(State.JUMP);
             return;
@@ -155,16 +154,22 @@ public class Player extends PhysicsEntity implements StateMachine
         
         enemy = (Enemy) getOneIntersectingObject(Enemy.class);    
             
-        if(enemy != null  && enemy.isAlive() && !enemy.getState().contains(state)) {
+        if(enemy != null  && enemy.isAlive() && !(enemy.getState() == State.SPECIAL)) {
             stateManager.changeState(State.HIT);
+        }
+    }
+    
+    private void handleCollectables() {
+        Collectable collectable = (Collectable) getOneIntersectingObject(Collectable.class);
+        if(collectable != null) {
+            collectable.destroy();
         }
     }
     
     private void checkWinCondition() {
         Goal roomGoal = (Goal) getOneIntersectingObject(Goal.class);
         if(roomGoal != null) {
-            LevelWorld world = (LevelWorld) getWorld();
-            world.nextRoom();
+            roomGoal.activate();
         }
     }
     
@@ -206,6 +211,7 @@ public class Player extends PhysicsEntity implements StateMachine
             }
 
             handleEnemies();
+            handleCollectables();
             
             handleCollisions();
             setMovement();
@@ -261,6 +267,7 @@ public class Player extends PhysicsEntity implements StateMachine
             } 
             
             handleEnemies();
+            handleCollectables();
             
             handleCollisions();
             setMovement();
@@ -318,6 +325,7 @@ public class Player extends PhysicsEntity implements StateMachine
             airFrames++;
             
             handleEnemies();
+            handleCollectables();
             
             handleCollisions();
             setMovement();
@@ -362,6 +370,7 @@ public class Player extends PhysicsEntity implements StateMachine
             airFrames++;
             
             handleEnemies();
+            handleCollectables();
             
             handleCollisions();
             setMovement();
@@ -423,6 +432,7 @@ public class Player extends PhysicsEntity implements StateMachine
             }
             
             handleEnemies();
+            handleCollectables();
             
             handleCollisions();
             setMovement();

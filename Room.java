@@ -15,11 +15,14 @@ public class Room
     private List<List<String>> tileMap = new ArrayList<>();
     private List<List<Integer>> sectorList = new ArrayList<>();
     private List<List<Integer>> enemyList = new ArrayList<>();
+    private List<List<Integer>> coinList = new ArrayList<>();
     
     private int startingPositionX;
     private int startingPositionY;
     private int endingPositionX;
     private int endingPositionY;
+    private int bigCoinPositionX;
+    private int bigCoinPositionY;
 
     
     public Room(String roomFile) {
@@ -37,6 +40,10 @@ public class Room
             String[] endingPositionVector = br.readLine().split(",");
             endingPositionX = Integer.parseInt(endingPositionVector[0]);
             endingPositionY = Integer.parseInt(endingPositionVector[1]);
+            
+            String[] bigCoinPositionVector = br.readLine().split(",");
+            bigCoinPositionX = Integer.parseInt(endingPositionVector[0]);
+            bigCoinPositionY = Integer.parseInt(endingPositionVector[1]);
             
             int sectorCount = Integer.parseInt(br.readLine());
             for(int i = 0; i < sectorCount; i++) {
@@ -56,6 +63,16 @@ public class Room
                     enemyInfo.add(Integer.parseInt(info));
                 }
                 enemyList.add(enemyInfo);
+            }
+            
+            int coinCount = Integer.parseInt(br.readLine());
+            for(int i = 0; i < coinCount; i++) {
+                List<Integer> coinInfo = new ArrayList<>();
+                String line = br.readLine();
+                for(String info : line.split(",")) {
+                    coinInfo.add(Integer.parseInt(info));
+                }
+                coinList.add(coinInfo);
             }
             
             int roomSize = Integer.parseInt(br.readLine());
@@ -91,6 +108,10 @@ public class Room
         return enemyList;
     }
     
+    public List<List<Integer>> getCoinList() {
+        return coinList;
+    }
+    
     public int getStartingPositionX() {
         return startingPositionX;
     }
@@ -107,5 +128,11 @@ public class Room
         return endingPositionY;
     }
 
+    public int getBigCoinPositionX() {
+        return bigCoinPositionX;
+    }
     
+    public int getBigCoinPositionY() {
+        return bigCoinPositionY;
+    }
 }

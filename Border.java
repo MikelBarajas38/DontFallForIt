@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
-public class Terrain extends Tile
+public class Border extends Tile
 {
-    
-    public Terrain(TileType type, List<List<String>> tileMap, int x, int y, int size) {
+    public Border(TileType type, List<List<String>> tileMap, int x, int y, int size) {
         super(size, type, tileMap, x, y, "images/tiles/terrain/");
     }
     
@@ -14,24 +13,20 @@ public class Terrain extends Tile
         boolean isLeftValid = isValidTilePosition(tileMap, x-1, y) && isSameTileType(tileMap, x, y, x-1, y); 
         boolean isRightValid = isValidTilePosition(tileMap, x+1, y) && isSameTileType(tileMap, x, y, x+1, y); 
         
-        if(isTopValid && isDownValid && isLeftValid && isRightValid) {
-            return TilePosition.CENTER_MID;
+        if(isTopValid && isDownValid) {
+            if(isValidTilePosition(tileMap, x-1, y)){
+                return TilePosition.CENTER_LEFT;
+            } else {
+                return TilePosition.CENTER_RIGHT;
+            }
         }
         
-        if(isDownValid && isLeftValid && isRightValid) {
-            return TilePosition.TOP_MID;
-        }
-        
-        if(isTopValid && isLeftValid && isRightValid) {
-            return TilePosition.BOTTOM_MID;
-        }
-        
-        if(isTopValid && isDownValid && isLeftValid) {
-            return TilePosition.CENTER_RIGHT;
-        }
-        
-        if(isTopValid && isDownValid && isRightValid) {
-            return TilePosition.CENTER_LEFT;
+        if(isLeftValid && isRightValid) {
+            if(isValidTilePosition(tileMap, x, y-1)){
+                return TilePosition.BOTTOM_MID;
+            } else {
+                return TilePosition.TOP_MID;
+            }
         }
         
         if(isDownValid && isRightValid) {
@@ -50,7 +45,6 @@ public class Terrain extends Tile
             return TilePosition.BOTTOM_RIGHT;
         }
         
-        return TilePosition.BOTTOM_LEFT;
+        return TilePosition.TOP_MID;
     }
-    
 }

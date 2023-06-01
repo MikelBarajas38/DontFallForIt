@@ -49,6 +49,8 @@ public class Madshroom extends Enemy implements StateMachine
     public void destroy() {
         setDead();
         stateManager.changeState(State.HIT);
+        LevelWorld world = (LevelWorld) getWorld();
+        world.setScore(world.getScore() + SCORE);
     }
     
     private class IdleState implements BaseState {
@@ -57,7 +59,7 @@ public class Madshroom extends Enemy implements StateMachine
             animationManager.changeSprite(State.IDLE);
             deltaMovementFrames = 0;
             shouldMove = false;
-            setVelocityY(0);
+            setVelocityX(0);
         }
         
         public State input() {
@@ -115,7 +117,7 @@ public class Madshroom extends Enemy implements StateMachine
                 setVelocityX(+MOVEMENT_SPEED);
             }
             
-            if(deltaMovementFrames > 100){
+            if(deltaMovementFrames > 120){
                 return State.IDLE;
             }
             

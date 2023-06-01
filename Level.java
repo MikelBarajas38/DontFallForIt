@@ -10,12 +10,13 @@ public class Level
 {
     
     private static final int TILESIZE = 16;
-    private static final int TOPRIGHTX = 3 * TILESIZE;
-    private static final int TOPRIGHTY = 4 * TILESIZE;
+    private static final int TOPRIGHTX = 7 * TILESIZE;
+    private static final int TOPRIGHTY = 8 * TILESIZE;
 
     World world;
     List<Room> roomList;
     Iterator<Room> roomIterator;
+    Room currentRoom;
 
     public Level(World world, String levelPath)
     {
@@ -29,9 +30,14 @@ public class Level
     public void buildNextRoom() {
         if(roomIterator.hasNext()) {
             destroyCurrentRoom();
-            Room newRoom = roomIterator.next();
-            buildRoom(newRoom);
+            currentRoom = roomIterator.next();
+            buildRoom(currentRoom);
         }
+    }
+    
+    public void rebuildRoom(){
+        destroyCurrentRoom();
+        buildRoom(currentRoom);
     }
     
     private void destroyCurrentRoom() {

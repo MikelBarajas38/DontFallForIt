@@ -35,7 +35,7 @@ public class Player extends PhysicsEntity implements StateMachine
         super(x, y);
         isJumping = false;
         baseGravity = getGravity();
-        heavyGravity = baseGravity * 2;
+        heavyGravity = baseGravity * 3;
         stateManager.changeState(State.FALL);
     }
     
@@ -44,7 +44,8 @@ public class Player extends PhysicsEntity implements StateMachine
         handleState();
         
         if (isAtEdge()) {
-            getWorld().removeObject(this);   
+            LevelWorld world = (LevelWorld) getWorld();
+            world.reloadRoom(); 
         } else {
              checkWinCondition();   
         }
@@ -162,7 +163,7 @@ public class Player extends PhysicsEntity implements StateMachine
         Goal roomGoal = (Goal) getOneIntersectingObject(Goal.class);
         if(roomGoal != null) {
             LevelWorld world = (LevelWorld) getWorld();
-            world.nextLevel();
+            world.nextRoom();
         }
     }
     
@@ -297,6 +298,7 @@ public class Player extends PhysicsEntity implements StateMachine
             if(!Greenfoot.isKeyDown("up")) {
                 setGravity(heavyGravity);
             }
+            
             return State.NULL;
         }
         
@@ -325,6 +327,7 @@ public class Player extends PhysicsEntity implements StateMachine
         }
         
         public void exit() {
+            setGravity(baseGravity);
             handleCollisions();
             setMovement();
         }

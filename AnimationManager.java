@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.io.File;
 import java.util.EnumMap;
 
-public class AnimationManager  
+public class AnimationManager
 {
     private PhysicsEntity entity;
     
@@ -21,6 +21,12 @@ public class AnimationManager
     private Direction pastDirection;
 
     public AnimationManager(PhysicsEntity entity, String spritePath)
+    {
+        this.entity = entity;
+        setSprites(spritePath);
+    }
+    
+    public AnimationManager(String spritePath)
     {
         this.entity = entity;
         setSprites(spritePath);

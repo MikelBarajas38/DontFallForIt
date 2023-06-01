@@ -14,7 +14,7 @@ public class SelectLevelButton extends Button
     public void onButtonClicked(){
         
         while(levelSelector>1){
-            actualLevelWorld.nextLevel();
+            actualLevelWorld.nextRoom();
             levelSelector--;
         }
         

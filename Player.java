@@ -5,9 +5,9 @@ import java.util.EnumMap;
 public class Player extends PhysicsEntity implements StateMachine
 {
     
-    private static final int MOVEMENT_SPEED = 4;
-    private static final int JUMP_SPEED = 12;
-    private static final int MAX_BOUNCE = 8;
+    private static final int MOVEMENT_SPEED = 3;
+    private static final int JUMP_SPEED =12;
+    private static final int MAX_BOUNCE = 4;
 
     private int acceleration = 1;
     
@@ -35,7 +35,7 @@ public class Player extends PhysicsEntity implements StateMachine
         super(x, y);
         isJumping = false;
         baseGravity = getGravity();
-        heavyGravity = baseGravity * 3;
+        heavyGravity = baseGravity * 2;
         stateManager.changeState(State.FALL);
     }
     
@@ -252,7 +252,7 @@ public class Player extends PhysicsEntity implements StateMachine
             }
             
             
-            if(terrainIsDown()) {
+            if(isGrounded()) {
                 if(getVelocityX() == 0) {
                     return State.IDLE;
                 }

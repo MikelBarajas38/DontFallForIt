@@ -1,25 +1,19 @@
-public enum TerrainType  
+public enum TileType
 {
-    GREEN("green", false),
-    CONCRETE_BORDER("concrete_border",true);
+    GREEN("green"),
+    CONCRETE_BORDER("concrete_border");
     
     private String path;
-    private boolean isBorder;
     
-    TerrainType(String path, boolean isBorder) {
+    TileType(String path) {
         this.path = path;
-        this.isBorder = isBorder;
     }
     
     public String getPath() {
         return path;
     }
     
-    public boolean isBorder() {
-        return isBorder;
-    }
-    
-    public static TerrainType getTerrainType(String key) {
+    public static TileType getTileType(String key) {
         switch(key) {
             case "1":
                 return GREEN;

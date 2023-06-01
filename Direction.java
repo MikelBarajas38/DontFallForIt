@@ -17,7 +17,7 @@ public enum Direction
                 return LEFT;
             
             default:
-                    return UP;    
+                return UP;    
         }
     }
 }

@@ -40,6 +40,10 @@ public class Level
         buildRoom(currentRoom);
     }
     
+    public boolean isLastRoom() {
+        return currentRoom == roomList.get(roomList.size() - 1);
+    }
+    
     private void destroyCurrentRoom() {
             world.removeObjects(world.getObjects(PhysicsEntity.class));
             world.removeObjects(world.getObjects(Sector.class));
@@ -112,7 +116,7 @@ public class Level
         int goalY = convertYFromTiles(room.getEndingPositionY()) - 32;
         
         Goal goal;
-        if(currentRoom == roomList.get(roomList.size() - 1)){
+        if(isLastRoom()){
             goal = new FinalGoal(goalX, goalY, getClosestTile(tileMap, room.getEndingPositionX(), room.getEndingPositionY()));            
         } else {
             goal = new MiddleGoal(goalX, goalY, getClosestTile(tileMap, room.getEndingPositionX(), room.getEndingPositionY()));

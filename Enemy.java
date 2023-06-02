@@ -8,7 +8,7 @@ public abstract class Enemy extends PhysicsEntity
     
     private boolean alive = true;
     private int score;
-    
+        
     public Enemy(int x, int y, int score, boolean killable) {
         super(x,y);
         this.score = score;
@@ -34,4 +34,5 @@ public abstract class Enemy extends PhysicsEntity
     public boolean isAlive() {
         return alive;
     }
+
 }

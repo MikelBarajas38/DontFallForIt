@@ -10,7 +10,7 @@ public class LevelMenu extends World
         prepare();
     }
     public void prepare(){
-        LevelWorld levelWorld = new LevelWorld("levels/testLevel");
+        LevelWorld levelWorld = new LevelWorld("levels/testLevel", "scoreboard/score0.txt");
         
         Button selectLevelButton1 = new SelectLevelButton("Nivel 1",FONT_SIZE, Color.BLUE,1,levelWorld);
         addObject(selectLevelButton1, getWidth() / 2, 200);

@@ -24,7 +24,6 @@ public class Room
     private int bigCoinPositionX;
     private int bigCoinPositionY;
 
-    
     public Room(String roomFile) {
         readRoomFromFile(roomFile);
     }

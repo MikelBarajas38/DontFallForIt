@@ -6,7 +6,7 @@ public class Coin extends Collectable
     private static final int SCORE = 5;
     
     public Coin(int x, int y, boolean isAffectedByGravity) {
-        super(x, y, SCORE, isAffectedByGravity, "images/sprites/coin/");
+        super(x, y, SCORE, isAffectedByGravity, "images/sprites/coin/", "sounds/coin/coin.wav");
     }
     
     public void destroy() {

@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class HowToPlayButton extends Button
+public class StartButton extends Button
 {
-    public HowToPlayButton(String path){
+    public StartButton(String path){
         super(path);
     }
 
     public void onButtonClicked(){
-        Greenfoot.setWorld(new HowToPlayMenu());
+        Greenfoot.setWorld(new PlayerSelectorMenu());
     }
 }

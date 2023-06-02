@@ -25,11 +25,11 @@ public class LevelWorld extends World
     
     HUD hud = new HUD(this);
         
-    public LevelWorld(String levelPath, String scorePath)
+    public LevelWorld(String levelPath, String scorePath, String playerPath, String playerName)
     {    
         super(WIDTH, HEIGHT, 1); 
         setBackground(new GreenfootImage("images/tiles/backround/bg.png"));
-        currentLevel = new Level(this, levelPath);
+        currentLevel = new Level(this, levelPath, playerPath, playerName);
         this.scorePath = scorePath;
         setActOrder(Sector.class);
         setPaintOrder(TransitionSquare.class);

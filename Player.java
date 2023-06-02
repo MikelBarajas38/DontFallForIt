@@ -33,10 +33,14 @@ public class Player extends PhysicsEntity implements StateMachine
     private static final GreenfootSound stompSound = new GreenfootSound("sounds/player/stomp.wav");
     private static final GreenfootSound deathSound = new GreenfootSound("sounds/player/death.wav");
 
-    private final AnimationManager animationManager = new AnimationManager(this, "images/sprites/player0/");
+    private final AnimationManager animationManager;
+    
+    private final String name;
         
-    public Player(int x, int y) {
+    public Player(int x, int y, String path, String name) {
         super(x, y);
+        animationManager  = new AnimationManager(this, path);
+        this.name = name;
         isJumping = false;
         baseGravity = getGravity();
         heavyGravity = baseGravity * 3;

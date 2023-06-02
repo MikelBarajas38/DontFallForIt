@@ -9,6 +9,7 @@ public class DifficultyMenu extends World
     {    
         super(800, 600, 1); 
         this.playerPath = playerPath;
+        this.playerName = playerName;
         prepare();
     }
     

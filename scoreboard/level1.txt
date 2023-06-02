@@ -1,0 +1,5 @@
+jose,310
+ARTURO,0
+FER,0
+LUIS,0
+MANUEL,0

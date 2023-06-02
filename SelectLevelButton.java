@@ -16,7 +16,7 @@ public class SelectLevelButton extends Button
     }
 
     public void onButtonClicked(){
-        actualLevelWorld = new LevelWorld("levels/"+difficulty.getPath(),"scoreboard/score0.txt",playerPath,playerName);
+        actualLevelWorld = new LevelWorld(difficulty.getPath(),playerPath,playerName);
         Greenfoot.setWorld(actualLevelWorld);
     }
 }

@@ -1,6 +1,6 @@
 public enum Difficulty
 {
-    EASY("testLevel"), 
+    EASY("level1"), 
     MEDIUM("testLevel"), 
     HARD("testLevel");
     

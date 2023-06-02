@@ -14,7 +14,7 @@ public class EnemyFactory
             case SAW:
                 return new Saw(x,y);
             case CANNON:
-                return new Cannon(x,y,direction.getOpposite());
+                return new Cannon(x,y,direction);
             
             default:
                 return new Madshroom(x,y);    

@@ -21,16 +21,22 @@ public class LevelWorld extends World
     private static final GreenfootSound transitionEffect = new GreenfootSound("sounds/transition/transition.wav");
     private static final GreenfootSound transitionEffect2 = new GreenfootSound("sounds/transition/transition2.wav");
     private static final GreenfootSound transitionEffectEnd = new GreenfootSound("sounds/transition/levelclear.wav");
-
     
     HUD hud = new HUD(this);
+    
+    private final String playerName;
+    private final String difficultyPath;
         
-    public LevelWorld(String levelPath, String scorePath, String playerPath, String playerName)
+    public LevelWorld(String difficultyPath, String playerPath, String playerName)
     {    
         super(WIDTH, HEIGHT, 1); 
         setBackground(new GreenfootImage("images/tiles/backround/bg.png"));
-        currentLevel = new Level(this, levelPath, playerPath, playerName);
-        this.scorePath = scorePath;
+        
+        currentLevel = new Level(this, "levels/"+difficultyPath, playerPath);
+        this.difficultyPath = difficultyPath;
+
+        this.playerName = playerName;
+        
         setActOrder(Sector.class);
         setPaintOrder(TransitionSquare.class);
         Transition transition = new Transition(this, false);
@@ -94,7 +100,7 @@ public class LevelWorld extends World
     public void nextRoom() {
         if(currentLevel.isLastRoom()){
             transitionEffectEnd.play();
-            Greenfoot.setWorld(new LevelEndScreen(score, timer, bigCoinCounter, scorePath));
+            Greenfoot.setWorld(new LevelEndScreen(score, timer, bigCoinCounter, scorePath, playerName));
         } else {
             transitionEffect.play();
             previousScore = score;

@@ -16,15 +16,18 @@ public abstract class Collectable extends PhysicsEntity implements StateMachine
     private final BaseState hitState = new HitState();
     private final StateManager stateManager = new StateManager(this);
     
+    private GreenfootSound soundEffect;
+    
     private final AnimationManager animationManager;
     
-    public Collectable(int x, int y, int score, boolean isAffectedByGravity, String path) {
+    public Collectable(int x, int y, int score, boolean isAffectedByGravity, String path, String soundPath) {
         super(x,y);
         this.score = score;
         animationManager = new AnimationManager(this, path);
         stateManager.changeState(State.IDLE);
         setDirectionX(Direction.LEFT);
         this.isAffectedByGravity = isAffectedByGravity;
+        soundEffect = new GreenfootSound(soundPath);
     }
     
     public abstract void destroy();
@@ -104,6 +107,7 @@ public abstract class Collectable extends PhysicsEntity implements StateMachine
     private class HitState implements BaseState {
         
         public void enter() {
+            soundEffect.play();
             animationManager.changeSprite(State.HIT);
         }
         

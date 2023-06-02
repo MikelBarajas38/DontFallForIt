@@ -11,7 +11,7 @@ public class BigCoin extends Collectable
     private static final int SCORE = 100;
     
     public BigCoin(int x, int y) {
-        super(x, y, SCORE, false, "images/sprites/bigcoin/");
+        super(x, y, SCORE, false, "images/sprites/bigcoin/", "sounds/coin/bigcoin.wav");
     }
     
     public void destroy() {
@@ -19,7 +19,8 @@ public class BigCoin extends Collectable
         if(stateManager.getCurrentState() != State.HIT) {
             stateManager.changeState(State.HIT);
             LevelWorld world = (LevelWorld) getWorld();
-            world.setScore(world.getScore() + SCORE);    
+            world.setScore(world.getScore() + SCORE);  
+            world.incrementBigCoinCounter();
         }
     }
 }

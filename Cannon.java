@@ -166,9 +166,7 @@ public class Cannon extends Enemy implements StateMachine
         }
         
         public State process() {
-            
-            setVelocityY(getVelocityY() + 1);
-            
+                        
             setRotation(getRotation() + deltaMovementFrames);
             
             setMovement();

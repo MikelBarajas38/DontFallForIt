@@ -28,6 +28,10 @@ public class Player extends PhysicsEntity implements StateMachine
     private final BaseState wallslideState = new WallslideState();
     private final BaseState hitState = new HitState();
     private final StateManager stateManager = new StateManager(this);
+    
+    private static final GreenfootSound jumpSound = new GreenfootSound("sounds/player/jump.wav");
+    private static final GreenfootSound stompSound = new GreenfootSound("sounds/player/stomp.wav");
+    private static final GreenfootSound deathSound = new GreenfootSound("sounds/player/death.wav");
 
     private final AnimationManager animationManager = new AnimationManager(this, "images/sprites/player0/");
         
@@ -45,7 +49,8 @@ public class Player extends PhysicsEntity implements StateMachine
         
         if (isAtEdge()) {
             LevelWorld world = (LevelWorld) getWorld();
-            world.reloadRoom(); 
+            world.transitionThisRoom();
+            getImage().setTransparency(0);
         } else {
              checkWinCondition();   
         }
@@ -149,6 +154,7 @@ public class Player extends PhysicsEntity implements StateMachine
         if(enemy != null && enemy.isKillable() && !(enemy.getState() == State.SPECIAL)) {
             enemy.destroy();
             stateManager.changeState(State.JUMP);
+            stompSound.play();
             return;
         } 
         
@@ -290,6 +296,7 @@ public class Player extends PhysicsEntity implements StateMachine
         public void enter() {
             
             animationManager.changeSprite(State.JUMP);
+            jumpSound.play();
 
             if(getDirectionY() == Direction.UP) {
                 setVelocityY(JUMP_SPEED);
@@ -452,6 +459,8 @@ public class Player extends PhysicsEntity implements StateMachine
     private class HitState implements BaseState {
         
         public void enter() {
+            deathSound.play();
+
             animationManager.changeSprite(State.HIT);
             if(getDirectionY() == Direction.UP) {
                 setVelocityY(3);

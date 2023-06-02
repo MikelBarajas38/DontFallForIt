@@ -14,6 +14,6 @@ public class MiddleGoal extends Goal
     
     public void activate() {
         LevelWorld world = (LevelWorld) getWorld();
-        world.nextRoom();
+        world.transitionNextRoom();
     }
 }

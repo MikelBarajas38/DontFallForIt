@@ -20,14 +20,13 @@ public class Level
     private String playerPath;
     private String playerName;
 
-    public Level(World world, String levelPath, String playerPath, String playerName)
+    public Level(World world, String levelPath, String playerPath)
     {
         this.world = world;
         roomList = new ArrayList<>();
         fillRoomList(levelPath);
         roomIterator = roomList.iterator();
         this.playerPath = playerPath;
-        this.playerName = playerName;
         buildNextRoom();
     }
     
@@ -135,7 +134,7 @@ public class Level
         
         int playerX = convertXFromTiles(room.getStartingPositionX()) - TILESIZE/2;
         int playerY = convertYFromTiles(room.getStartingPositionY()) - TILESIZE/2;
-        Player player = new Player(playerX, playerY,playerPath,playerName);
+        Player player = new Player(playerX, playerY,playerPath);
         world.addObject(player, playerX, playerY);
 
     }

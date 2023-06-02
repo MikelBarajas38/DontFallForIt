@@ -173,9 +173,11 @@ public class Player extends PhysicsEntity implements StateMachine
     }
     
     private void checkWinCondition() {
-        Goal roomGoal = (Goal) getOneIntersectingObject(Goal.class);
-        if(roomGoal != null) {
-            roomGoal.activate();
+        if(stateManager.getCurrentState() != State.HIT) {
+            Goal roomGoal = (Goal) getOneIntersectingObject(Goal.class);
+            if(roomGoal != null) {
+                roomGoal.activate();
+            }
         }
     }
     

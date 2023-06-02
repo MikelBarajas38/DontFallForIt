@@ -33,6 +33,8 @@ public class LevelWorld extends World
         this.scorePath = scorePath;
         setActOrder(Sector.class);
         setPaintOrder(TransitionSquare.class);
+        Transition transition = new Transition(this, false);
+        transition.setUp();
     }
     
     public void act() {

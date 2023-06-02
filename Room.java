@@ -41,8 +41,8 @@ public class Room
             endingPositionY = Integer.parseInt(endingPositionVector[1]);
             
             String[] bigCoinPositionVector = br.readLine().split(",");
-            bigCoinPositionX = Integer.parseInt(endingPositionVector[0]);
-            bigCoinPositionY = Integer.parseInt(endingPositionVector[1]);
+            bigCoinPositionX = Integer.parseInt(bigCoinPositionVector[0]);
+            bigCoinPositionY = Integer.parseInt(bigCoinPositionVector[1]);
             
             int sectorCount = Integer.parseInt(br.readLine());
             for(int i = 0; i < sectorCount; i++) {

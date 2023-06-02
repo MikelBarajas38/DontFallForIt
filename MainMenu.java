@@ -11,18 +11,15 @@ public class MainMenu extends World
     }
     
     public void prepare(){
-        setBackground("images/Titulo.jpg");
+        setBackground("images/home_page.png");
         
-        Button playGame = new PlayButton("Jugar",FONT_SIZE, Color.GREEN);
-        addObject(playGame, 610, 345);
+        Button startGame = new StartButton("images/buttons/iniciar.png");
+        addObject(startGame, 615, 345);
         
-        Button levelMenu = new ShowLevelMenuButton("Elegir nivel",FONT_SIZE,Color.GREEN);
-        addObject(levelMenu, 560, 400);
+        Button howToPlayButton = new HowToPlayButton("images/buttons/como_jugar.png");
+        addObject(howToPlayButton,577,430);
         
-        Button howToPlayButton = new HowToPlayButton("Como jugar",FONT_SIZE,Color.GREEN);
-        addObject(howToPlayButton,555,455);
-        
-        Button quitGame = new QuitGameButton("Salir",FONT_SIZE,Color.GREEN);
-        addObject(quitGame, 620, 510);
+        Button quitGame = new QuitGameButton("images/buttons/salir.png");
+        addObject(quitGame, 626, 510);
     }
 }

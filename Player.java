@@ -29,10 +29,14 @@ public class Player extends PhysicsEntity implements StateMachine
     private final BaseState hitState = new HitState();
     private final StateManager stateManager = new StateManager(this);
 
-    private final AnimationManager animationManager = new AnimationManager(this, "images/sprites/player0/");
+    private final AnimationManager animationManager;
+    
+    private final String name;
         
-    public Player(int x, int y) {
+    public Player(int x, int y, String path, String name) {
         super(x, y);
+        animationManager  = new AnimationManager(this, path);
+        this.name = name;
         isJumping = false;
         baseGravity = getGravity();
         heavyGravity = baseGravity * 3;

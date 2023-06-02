@@ -13,17 +13,21 @@ public class Level
     private static final int TOPRIGHTX = 7 * TILESIZE;
     private static final int TOPRIGHTY = 8 * TILESIZE;
 
-    World world;
-    List<Room> roomList;
-    Iterator<Room> roomIterator;
-    Room currentRoom;
+    private World world;
+    private List<Room> roomList;
+    private Iterator<Room> roomIterator;
+    private Room currentRoom;
+    private String playerPath;
+    private String playerName;
 
-    public Level(World world, String levelPath)
+    public Level(World world, String levelPath, String playerPath, String playerName)
     {
         this.world = world;
         roomList = new ArrayList<>();
         fillRoomList(levelPath);
         roomIterator = roomList.iterator();
+        this.playerPath = playerPath;
+        this.playerName = playerName;
         buildNextRoom();
     }
     
@@ -113,7 +117,7 @@ public class Level
         
         int playerX = convertXFromTiles(room.getStartingPositionX()) - TILESIZE/2;
         int playerY = convertYFromTiles(room.getStartingPositionY()) - TILESIZE/2;
-        Player player = new Player(playerX, playerY);
+        Player player = new Player(playerX, playerY,playerPath,playerName);
         world.addObject(player, playerX, playerY);
 
     }

@@ -11,6 +11,8 @@ public class LevelEndScreen extends World
         super(800, 600, 1); 
         scoreBoard = new Scoreboard(scorePath);
         setUp();
+        scoreBoard.addScore(playerName, score);
+        scoreBoard.close();
     }
     
     private void setUp() {

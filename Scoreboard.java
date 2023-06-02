@@ -1,6 +1,8 @@
 import java.util.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 
 public class Scoreboard  
 {
@@ -40,6 +42,17 @@ public class Scoreboard
     
         });
         return elements;
+    }
+    
+    public void close() {
+        List<Map.Entry<String, Integer>> scores = getScoreboard();
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(scorePath))) {
+            for(int i = 0; i < 5; i++) {
+                bw.write(scores.get(i).getKey() + "," + scores.get(i).getValue()+"\n");
+            }
+        } catch(java.io.IOException e) {
+            System.out.println("Error reading score file");
+        }
     }
     
 }

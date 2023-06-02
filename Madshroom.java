@@ -53,7 +53,7 @@ public class Madshroom extends Enemy implements StateMachine
         world.setScore(world.getScore() + SCORE);
     }
     
-    public String getState(){
+    public State getState(){
         return stateManager.getCurrentState();
     }
     

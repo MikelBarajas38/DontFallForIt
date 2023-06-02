@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 import java.util.EnumMap;
 
-public class Fireball extends Enemy
+public class Fireball extends Enemy implements StateMachine
 {
     
     private static final int MOVEMENT_SPEED = 1;
@@ -52,7 +52,7 @@ public class Fireball extends Enemy
         getWorld().removeObject(this);
     }
     
-    public String getState(){
+    public State getState(){
         return stateManager.getCurrentState();
     }
     

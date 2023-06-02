@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 import java.util.EnumMap;
 
-public class Cannon extends Enemy
+public class Cannon extends Enemy implements StateMachine
 {
     private static final int SCORE = 50;
 
@@ -57,7 +57,7 @@ public class Cannon extends Enemy
         world.setScore(world.getScore() + SCORE);
     }
     
-    public String getState(){
+    public State getState(){
         return stateManager.getCurrentState();
     }
     
@@ -107,8 +107,8 @@ public class Cannon extends Enemy
             
             if(shouldMove) {
                 animationManager.nextSprite();
-                
             }
+            
             handleShootDirection();
             return State.NULL;
         }
@@ -166,9 +166,7 @@ public class Cannon extends Enemy
         }
         
         public State process() {
-            
-            setVelocityY(getVelocityY() + 1);
-            
+                        
             setRotation(getRotation() + deltaMovementFrames);
             
             setMovement();

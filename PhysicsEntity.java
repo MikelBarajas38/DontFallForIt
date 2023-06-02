@@ -100,8 +100,8 @@ public abstract class PhysicsEntity extends Actor
         int imageWidth = getImage().getWidth();
         int imageHeight = getImage().getHeight();
         
-        if(getOneObjectAtOffset(imageWidth / -2 + 8, imageHeight / -2 + velocityY, Terrain.class) != null ||
-            getOneObjectAtOffset(imageWidth / 2 - 8, imageHeight / -2 + velocityY, Terrain.class) != null) {
+        if(getOneObjectAtOffset(imageWidth / -2 + 8, imageHeight / -2 + velocityY, Tile.class) != null ||
+            getOneObjectAtOffset(imageWidth / 2 - 8, imageHeight / -2 + velocityY, Tile.class) != null) {
                 return true; 
             }            
             
@@ -112,8 +112,8 @@ public abstract class PhysicsEntity extends Actor
         int imageWidth = getImage().getWidth();
         int imageHeight = getImage().getHeight();
         
-        if(getOneObjectAtOffset(imageWidth / -2 + 8, imageHeight / 2 + velocityY, Terrain.class) != null ||
-            getOneObjectAtOffset(imageWidth / 2  - 8, imageHeight / 2 + velocityY, Terrain.class) != null) {
+        if(getOneObjectAtOffset(imageWidth / -2 + 8, imageHeight / 2 + velocityY, Tile.class) != null ||
+            getOneObjectAtOffset(imageWidth / 2  - 8, imageHeight / 2 + velocityY, Tile.class) != null) {
                 return true; 
             }            
             
@@ -124,8 +124,8 @@ public abstract class PhysicsEntity extends Actor
         int imageWidth = getImage().getWidth();
         int imageHeight = getImage().getHeight();
         
-        if(getOneObjectAtOffset(imageWidth /-2 + velocityX, imageHeight / 2 - 8, Terrain.class) != null ||
-            getOneObjectAtOffset(imageWidth /-2 + velocityX, imageHeight / -2  + 8, Terrain.class) != null) {
+        if(getOneObjectAtOffset(imageWidth /-2 + velocityX, imageHeight / 2 - 8, Tile.class) != null ||
+            getOneObjectAtOffset(imageWidth /-2 + velocityX, imageHeight / -2  + 8, Tile.class) != null) {
                 return true; 
             }            
             
@@ -136,8 +136,8 @@ public abstract class PhysicsEntity extends Actor
         int imageWidth = getImage().getWidth();
         int imageHeight = getImage().getHeight();
         
-        if(getOneObjectAtOffset(imageWidth / 2 + velocityX, imageHeight / 2 - 8, Terrain.class) != null ||
-            getOneObjectAtOffset(imageWidth / 2 + velocityX, imageHeight / -2  + 8, Terrain.class) != null) {
+        if(getOneObjectAtOffset(imageWidth / 2 + velocityX, imageHeight / 2 - 8, Tile.class) != null ||
+            getOneObjectAtOffset(imageWidth / 2 + velocityX, imageHeight / -2  + 8, Tile.class) != null) {
                 return true; 
             }            
             
@@ -172,10 +172,10 @@ public abstract class PhysicsEntity extends Actor
         int imageWidth = getImage().getWidth();
         int imageHeight = getImage().getHeight();
         
-        if(getOneObjectAtOffset(imageWidth /-2 - 1, imageHeight / 2 - 4, Terrain.class) != null ||
-            getOneObjectAtOffset(imageWidth /-2 - 1, imageHeight / -2  + 4, Terrain.class) != null ||
-            getOneObjectAtOffset(imageWidth /2 + 1, imageHeight / -2  + 4, Terrain.class) != null ||
-            getOneObjectAtOffset(imageWidth /2 + 1, imageHeight / -2  + 4, Terrain.class) != null){
+        if(getOneObjectAtOffset(imageWidth /-2 - 1, imageHeight / 2 - 4, Tile.class) != null ||
+            getOneObjectAtOffset(imageWidth /-2 - 1, imageHeight / -2  + 4, Tile.class) != null ||
+            getOneObjectAtOffset(imageWidth /2 + 1, imageHeight / -2  + 4, Tile.class) != null ||
+            getOneObjectAtOffset(imageWidth /2 + 1, imageHeight / -2  + 4, Tile.class) != null){
                 return true; 
             }            
             

@@ -7,6 +7,7 @@ public class StateManager
     private EnumMap<State, BaseState> entityStates;
     
     private BaseState currentState;
+    private State state;
 
     public StateManager(PhysicsEntity entity)
     {
@@ -35,10 +36,11 @@ public class StateManager
         }
         
         currentState = entityStates.get(newState);
+        state = newState;
         currentState.enter();
     }
     
-    public String getCurrentState() {
-        return currentState.getClass().getName();
+    public State getCurrentState() {
+        return state;
     }
 }

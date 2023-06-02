@@ -25,7 +25,6 @@ public class LevelWorld extends World
     HUD hud = new HUD(this);
     
     private final String playerName;
-    private final String difficultyPath;
         
     public LevelWorld(String difficultyPath, String playerPath, String playerName)
     {    
@@ -33,8 +32,8 @@ public class LevelWorld extends World
         setBackground(new GreenfootImage("images/tiles/backround/bg.png"));
         
         currentLevel = new Level(this, "levels/"+difficultyPath, playerPath);
-        this.difficultyPath = difficultyPath;
-
+        scorePath = "scoreboard/"+difficultyPath+".txt";
+        
         this.playerName = playerName;
         
         setActOrder(Sector.class);

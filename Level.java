@@ -102,7 +102,7 @@ public class Level
             List<Integer> data = (List<Integer>) enemyIterator.next();
             int enemyX = convertXFromTiles(data.get(1)) - TILESIZE/2;
             int enemyY = convertXFromTiles(data.get(2)) - TILESIZE/2;
-            Enemy enemy = EnemyFactory.getEnemy(EnemyType.getEnemyType(data.get(0)), enemyX, enemyY);
+            Enemy enemy = EnemyFactory.getEnemy(EnemyType.getEnemyType(data.get(0)), enemyX, enemyY, getClosestTile(tileMap, data.get(1), data.get(2)));
             world.addObject(enemy, enemyX, enemyY);
         }
         
@@ -149,6 +149,8 @@ public class Level
     }
     
     private Direction getClosestTile(List<List<String>> tileMap, int x, int y){
+        x--;
+        y--;
         int distanceTop = getDistanceToTile(tileMap, x, y, 0, -1);
         int distanceDown = getDistanceToTile(tileMap, x, y, 0, 1);
         int distanceLeft = getDistanceToTile(tileMap, x, y, -1, 0);

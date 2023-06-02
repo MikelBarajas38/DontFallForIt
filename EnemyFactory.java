@@ -1,7 +1,7 @@
 public class EnemyFactory  
 {
     
-    public static Enemy getEnemy(EnemyType type, int x, int y) {
+    public static Enemy getEnemy(EnemyType type, int x, int y, Direction direction) {
         switch(type) {
             case MADSHROOM:
                 return new Madshroom(x,y);
@@ -9,12 +9,12 @@ public class EnemyFactory
                 return new Ghost(x,y);
             case SKULL:
                 return new Skull(x,y);
-            case CANNON:
-                return new Cannon(x,y,Direction.UP);
             case BIRD:
                 return new Bird(x,y);
             case SAW:
                 return new Saw(x,y);
+            case CANNON:
+                return new Cannon(x,y,direction.getOpposite());
             
             default:
                 return new Madshroom(x,y);    

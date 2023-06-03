@@ -101,7 +101,7 @@ public class Cannon extends Enemy implements StateMachine
                 shoot();
             }else if(deltaShootFireball == 8){
                 shouldMove = false;
-            }else if(deltaShootFireball == 180) deltaShootFireball = -1;
+            }else if(deltaShootFireball == 200) deltaShootFireball = -1;
             
             deltaShootFireball++;
             

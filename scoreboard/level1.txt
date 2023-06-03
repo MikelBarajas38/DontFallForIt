@@ -1,5 +1,5 @@
-jose,310
-ARTURO,0
-FER,0
-LUIS,0
-MANUEL,0
+Cardon,0
+Luis,0
+Mikel,0
+Norman,0
+Lalo,0

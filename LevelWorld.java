@@ -25,6 +25,8 @@ public class LevelWorld extends World
     HUD hud = new HUD(this);
     
     private final String playerName;
+    
+    private final GreenfootSound backgroundMusic = new GreenfootSound("sounds/song.mp3");
         
     public LevelWorld(String difficultyPath, String playerPath, String playerName)
     {    
@@ -40,6 +42,9 @@ public class LevelWorld extends World
         setPaintOrder(TransitionSquare.class);
         Transition transition = new Transition(this, false);
         transition.setUp();
+        
+        backgroundMusic.setVolume(40);
+        backgroundMusic.playLoop();
     }
     
     public void act() {
@@ -100,6 +105,7 @@ public class LevelWorld extends World
         if(currentLevel.isLastRoom()){
             transitionEffectEnd.play();
             Greenfoot.setWorld(new LevelEndScreen(score, timer, bigCoinCounter, scorePath, playerName));
+            backgroundMusic.stop();
         } else {
             transitionEffect.play();
             previousScore = score;

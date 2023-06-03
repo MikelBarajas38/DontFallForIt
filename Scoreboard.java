@@ -41,6 +41,11 @@ public class Scoreboard
             }
     
         });
+        
+        if(elements.size() > 5) {
+            elements.remove(5);
+        }
+        
         return elements;
     }
     

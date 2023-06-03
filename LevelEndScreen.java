@@ -4,8 +4,8 @@ import greenfoot.*;
 public class LevelEndScreen extends World
 {
     private static final int TOTAL_POINTS_TIMER = 200;
-    private static final int DECREASE_POINTS_TIMER = 2;
-    private static final int TIME_LIMIT_TOTAL_POINTS = 480;
+    private static final int DECREASE_POINTS_TIMER = 1;
+    private static final int TIME_LIMIT_TOTAL_POINTS = 600;
     private static final int POINTS_PER_BIG_COIN = 50;
     
     private Scoreboard scoreBoard;
@@ -30,10 +30,10 @@ public class LevelEndScreen extends World
         setBackground("images/scoreboard.png");
         
         Button returnButton = new ReturnButton ("images/buttons/atras.png",new MainMenu());
-        addObject(returnButton, getWidth() / 2 - 270, 510);
+        addObject(returnButton, getWidth() / 2 - 270, 530);
         
         Button quitGame = new QuitGameButton("images/buttons/salir.png");
-        addObject(quitGame, 626, 510);
+        addObject(quitGame, 626, 530);
     }
     
     private void setUpScoreboard() {
@@ -52,8 +52,8 @@ public class LevelEndScreen extends World
         int timerScore = TOTAL_POINTS_TIMER;
         int coinsScore = bigCoinCounter * POINTS_PER_BIG_COIN;
         
-        if(timer > TIME_LIMIT_TOTAL_POINTS){
-            timerScore -= DECREASE_POINTS_TIMER * (timer - TIME_LIMIT_TOTAL_POINTS);
+        if(timer < TIME_LIMIT_TOTAL_POINTS){
+            timerScore -= DECREASE_POINTS_TIMER * (TIME_LIMIT_TOTAL_POINTS-timer);
             if(timerScore < 0) timerScore = 0;
         }
         

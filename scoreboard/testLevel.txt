@@ -1,1 +1,5 @@
-mikel,1535
+Walter,690
+Cardon,0
+Coraline,0
+Lalo,0
+Marco,0

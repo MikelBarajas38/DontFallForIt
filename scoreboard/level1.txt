@@ -1,5 +1,5 @@
-mikk,465
-Player,365
+McKinnon,635
+Sanson,380
 Cardon,0
+Coraline,0
 Lalo,0
-Luis,0

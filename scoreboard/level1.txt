@@ -1,5 +1,5 @@
+joel,910
+m,900
 McKinnon,635
+MIKEL,565
 Sanson,380
-Cardon,0
-Coraline,0
-Lalo,0

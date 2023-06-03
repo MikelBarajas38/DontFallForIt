@@ -1,7 +1,7 @@
 public class EnemyFactory  
 {
     
-    public static Enemy getEnemy(EnemyType type, int x, int y, Direction direction) {
+    public static Enemy getEnemy(EnemyType type, int x, int y) {
         switch(type) {
             case MADSHROOM:
                 return new Madshroom(x,y);
@@ -14,7 +14,7 @@ public class EnemyFactory
             case SAW:
                 return new Saw(x,y);
             case CANNON:
-                return new Cannon(x,y,direction);
+                return new Cannon(x,y,Direction.LEFT);
             
             default:
                 return new Madshroom(x,y);    

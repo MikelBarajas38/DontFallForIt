@@ -42,7 +42,7 @@ public class LevelEndScreen extends World
         List<Map.Entry<String, Integer>> scoreList = scoreBoard.getScoreboard();
         for(Map.Entry<String, Integer> score : scoreList) {
             getBackground().drawImage(new GreenfootImage(score.getKey() + " with " + score.getValue(), 24,Color.BLACK, null), 400, nextScoreYPosition);
-            System.out.println(score.getKey() + " " + score.getValue());
+            //System.out.println(score.getKey() + " " + score.getValue());
             nextScoreYPosition += 25;
         }
     }

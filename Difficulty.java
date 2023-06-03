@@ -1,8 +1,8 @@
 public enum Difficulty
 {
     EASY("level1"), 
-    MEDIUM("testLevel"), 
-    HARD("testLevel");
+    MEDIUM("level2"), 
+    HARD("level3");
     
     private String path;
     

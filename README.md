@@ -11,6 +11,11 @@ Don´t Fall For It! es un juego puzzler de plataformas 2D donde la gravedad camb
 ## Tecnología
 Juego Implementado usando greenfoot (Por eso no se usan packages).
 
+## Features
+- Toda la lógica de juega está modelada usando un patrón de diseño de máquina de estados finita.
+- Gestor de animaciones basado en estados que utiliza enrutamiento basado en el sistema de archivos.
+- Parser de niveles desde archivos de texto.
+
 ## Créditos
 Mikel Ignacio Barajas Martínez – Luis Ángel Sánchez Múñiz
 Proyecto de Tecnología Orientada a Objetos, UASLP.

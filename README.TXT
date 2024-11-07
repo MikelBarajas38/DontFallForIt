@@ -8,4 +8,4 @@ PROJECT TITLE: Don't Fall For It!
 PURPOSE OF PROJECT: Proyecto para Tecnología Orientada a Objetos, UASLP.
 VERSION or DATE: 1.0
 HOW TO START THIS PROJECT: Clonar a una carpeta y abrir en Greenfoot. Instanciar un nuevo MainMenu.
-AUTHORS: Mikel Ignacio Barajas Martínez – Luis Ángel Sánchez Múñiz
+AUTHORS: Mikel Ignacio Barajas Martínez – Luis Angel Sánchez Múñiz

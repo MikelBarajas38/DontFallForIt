@@ -17,5 +17,5 @@ Juego Implementado usando greenfoot (Por eso no se usan packages).
 - Parser de niveles desde archivos de texto.
 
 ## Créditos
-Mikel Ignacio Barajas Martínez – Luis Ángel Sánchez Múñiz
+Mikel Ignacio Barajas Martínez – Luis Angel Sánchez Múñiz
 Proyecto de Tecnología Orientada a Objetos, UASLP.
